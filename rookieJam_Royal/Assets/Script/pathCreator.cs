@@ -98,8 +98,9 @@ public class pathCreator : MonoBehaviour
             
             soldier.transform.rotation = Quaternion.Euler(0f, angle,0f );
 
-            // Optionally, you can also set the rotation around the Y-axis to 0 (pitch) and the X-axis to 0 (roll)
-            soldier.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            // Optionally, you can also set the rotation
+            // around the Y-axis to 0 (pitch) and the X-axis to 0 (roll)
+            //soldier.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
             prevPoint = currentPoint;
         }
