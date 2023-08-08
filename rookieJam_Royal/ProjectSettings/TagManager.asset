@@ -11,6 +11,8 @@ TagManager:
   - InnerBoundary
   - PowerNegative
   - PowerPositive
+  - Drone
+  - Enemy
   layers:
   - Default
   - TransparentFX

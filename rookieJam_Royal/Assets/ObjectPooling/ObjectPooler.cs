@@ -57,17 +57,14 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
 
-        // Get the movement script on the object 
-        EnemyMover enemyMover = objectToSpawn.GetComponent<EnemyMover>();
-        if (enemyMover != null)
-        {
-            // Enable the movement script
-            enemyMover.enabled = true;
-        }
-
-        // Enqueue the object back into the pool
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
         return objectToSpawn;
+    }
+    public void Free(GameObject prefab)
+    {
+        if (prefab == null)
+            return;
+        prefab.SetActive(false);
+        if(poolDictionary.ContainsKey(prefab.tag))
+            poolDictionary[prefab.tag].Enqueue(prefab);
     }
 }
