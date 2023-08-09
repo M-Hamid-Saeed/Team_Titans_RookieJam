@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] Transform playerPos;
-    // Start is called before the first frame update
+    public float movementDuration = 10.0f; // Time it takes for enemy to reach player
+
     void Start()
     {
-        
+        MoveTowardsPlayer();
     }
 
-    // Update is called once per frame
-    void Update()
+    void MoveTowardsPlayer()
     {
-       // transform.forward = Vector3.Slerp(transform.forward, Quaternion.EulerRotation(playerPos.rotation.x,playerPos.rotation.y,playerPos.rotation.z), Time.deltaTime * 100);
+        // Move the enemy towards the player's position using DOTween
+        transform.DOMove(playerPos.position, movementDuration).OnComplete(DestroyEnemy);
+    }
 
-        transform.DOMove(playerPos.position, 10); 
+    void DestroyEnemy()
+    {
+        // Return the enemy to the pool or destroy it as needed
+        ObjectPooler.Instance.Free(gameObject);
     }
 }
