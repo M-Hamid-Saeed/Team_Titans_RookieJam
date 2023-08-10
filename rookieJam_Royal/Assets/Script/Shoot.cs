@@ -11,7 +11,7 @@ public class Shoot : MonoBehaviour
     void Start()
     {
         OP = ObjectPooler.Instance;
-        InvokeRepeating("SpawnBullets", 0.1f, 0.5f);
+        InvokeRepeating("SpawnBullets", 0.1f, 0.2f);
     }
 
     // Update is called once per frame

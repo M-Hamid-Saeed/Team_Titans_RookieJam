@@ -19,10 +19,8 @@ public class Fire : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Bullet collided with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy collision detected.");
             ObjectPooler.Instance.Free(gameObject);
         }
     }
