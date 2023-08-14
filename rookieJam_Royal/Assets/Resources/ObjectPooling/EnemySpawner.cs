@@ -32,6 +32,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemyAtSpawnPoint()
     {
-        ObjectPooler.Instance.SpawnFromPool("Enemy", spawnPoint.position, Quaternion.identity);
+        ObjectPooler.Instance?.SpawnFromPool("Enemy", spawnPoint.position, Quaternion.identity);
     }
 }

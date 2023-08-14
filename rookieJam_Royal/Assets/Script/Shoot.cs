@@ -4,24 +4,69 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    ObjectPooler OP;
-    public GameObject bullet;
-    public bool isDown = false;
-    // Start is called before the first frame update
+	[SerializeField] WeaponData firingData;
+
+	private int  bulletDamage;
+    [SerializeField] BulletPooler bulletPooler;
+	private WaitForSeconds fireRateTime;
+    private IEnumerator waitForHold;
+	public Transform muzzlePoint;
+	public Transform aimPoint;
+    private bool canShot = false;
+    // Start is called before the fi
+	// rst frame update
     void Start()
     {
-        OP = ObjectPooler.Instance;
-        InvokeRepeating("SpawnBullets", 0.1f, 0.2f);
+		InitializeWeapon();
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+	private void InitializeWeapon()
+	{
+		firingData.bullet.speed = firingData.dataSheet.bulletSpeed;
+		bulletDamage = firingData.dataSheet.damage;
+		fireRateTime = new WaitForSeconds(firingData.dataSheet.fireRate);
+        waitForHold = new WaitUntil(() => canShot);
+
+		StartCoroutine(BulletShoot());
+	}
+
+    public void shoot()
     {
-        
+        canShot = true;
+    }
+    private IEnumerator BulletShoot()
+    {
+        yield return waitForHold;
+        while (canShot) // Keep shooting continuously
+        {
+            GameObject bulletObject = bulletPooler.GetNew(muzzlePoint.position); // Get a bullet GameObject from the pooler
+
+            if (bulletObject == null)
+            {
+                yield break; // Exit the coroutine if no bullet is available
+            }
+
+            // Cast the GameObject to a Bullet instance
+            Bullet bulletClone = bulletObject.GetComponent<Bullet>();
+
+            if (bulletClone == null)
+            {
+                // If the casting fails, return the bullet object to the pool and continue
+                bulletPooler.ReturnToPool(bulletObject);
+                yield return null;
+            }
+
+            bulletClone.SetDamage(bulletDamage);
+            bulletClone.SetHitPosition(aimPoint.position);
+            bulletClone.SetDirection((aimPoint.position - muzzlePoint.position).normalized);
+
+            yield return fireRateTime; // Wait for the fire rate before shooting again
+            canShot = false;
+        }
+
+        yield return BulletShoot();
     }
 
-    void SpawnBullets()
-    {
-        OP.SpawnFromPool("Bullet", transform.position, bullet.transform.rotation);
-    }
 }
