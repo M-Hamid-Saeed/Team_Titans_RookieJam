@@ -8,16 +8,15 @@ public class EnemySpawner : MonoBehaviour
     public int numberOfEnemiesInWave = 5;
     public float timeBetweenSpawns = 1.0f;
 
+    private bool canSpawn = false; // Control whether the spawner can spawn enemies
+
     private void Update()
     {
-        // Check for touch input
-        if (Input.touchCount > 0)
+        // Check if the spawner can spawn enemies
+        if (canSpawn)
         {
-            // Spawn a wave of enemies when the screen is touched
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                StartCoroutine(SpawnEnemyWave());
-            }
+            StartCoroutine(SpawnEnemyWave());
+            canSpawn = false; // Disable spawning until the next button click
         }
     }
 
@@ -33,5 +32,11 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemyAtSpawnPoint()
     {
         ObjectPooler.Instance?.SpawnFromPool("Enemy", spawnPoint.position, Quaternion.identity);
+    }
+
+    // Method to enable spawning when the button is clicked
+    public void EnableSpawning()
+    {
+        canSpawn = true;
     }
 }
