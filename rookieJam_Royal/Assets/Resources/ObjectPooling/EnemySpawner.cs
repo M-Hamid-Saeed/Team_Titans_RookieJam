@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Transform spawnPoint;
+    public Transform[] spawnPoints;
+
     public int numberOfEnemiesInWave = 5;
     public float timeBetweenSpawns = 1.0f;
 
@@ -24,14 +25,17 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < numberOfEnemiesInWave; i++)
         {
-            SpawnEnemyAtSpawnPoint();
+            SpawnEnemyAtRandomPoint();
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
     }
 
-    private void SpawnEnemyAtSpawnPoint()
+    private void SpawnEnemyAtRandomPoint()
     {
-        ObjectPooler.Instance?.SpawnFromPool("Enemy", spawnPoint.position, Quaternion.identity);
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+        Vector3 randomSpawnPoint = spawnPoints[randomIndex].position;
+
+        ObjectPooler.Instance.SpawnFromPool("Enemy", randomSpawnPoint, Quaternion.identity);
     }
 
     // Method to enable spawning when the button is clicked
