@@ -32,7 +32,7 @@ public class pathCreator : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, targetLayerMask))
+            if (Physics.Raycast(ray, out hitInfo))
             {
                 Vector3 hit_info = hitInfo.point;
                 hit_info.y = lineBoundY;
@@ -103,8 +103,9 @@ public class pathCreator : MonoBehaviour
                 // Apply rotation to the soldier
                 Quaternion soldierRotation = soldier.transform.rotation;
                 soldierRotation.y = rotation.y;
-                soldierRotation.x = 0;
+                soldierRotation.x = rotation.x;
                 soldierRotation.z = 0;
+
 
                 
 

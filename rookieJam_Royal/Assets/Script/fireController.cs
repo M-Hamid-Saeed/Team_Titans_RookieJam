@@ -5,11 +5,10 @@ using UnityEngine;
 public class fireController : MonoBehaviour
 {
     [SerializeField] Shoot shootSystem;
-
-
-    // Update is called once per frame
-    void Update()
+   
+   public void DoShoot()
     {
             shootSystem.shoot();
     }
+ 
 }

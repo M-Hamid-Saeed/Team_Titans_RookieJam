@@ -31,7 +31,7 @@ public class DamageableEntity : MonoBehaviour, IDamageable
         return maxHealth;
     }
 
-    protected virtual void Die()
+    public virtual void Die()
     {
         // Implement death logic here
         ObjectPooler.Instance?.Free(this.gameObject);
@@ -40,11 +40,12 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     private void PlayParticles()
     {
         GameObject particle = ObjectPooler.Instance?.SpawnFromPool("EnemyDeath", this.transform.position, Quaternion.identity);
+
         WaitForParticlePlay(particle);
     }
     IEnumerator WaitForParticlePlay(GameObject particle)
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.01f);
         ObjectPooler.Instance?.Free(particle);
 
     }
