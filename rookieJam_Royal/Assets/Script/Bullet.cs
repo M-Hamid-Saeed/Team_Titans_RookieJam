@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
             //Debug.Log("Bullet Freed");
 
             bulletPooler.ReturnToPool(this.gameObject);
-            lifeTime = 2;
+            lifeTime = 5;
         }
     }
 
@@ -49,6 +49,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        IDamageable damageableEntity = collision.gameObject.GetComponent<IDamageable>();
+        if (damageableEntity != null)
+        {
+            damageableEntity.TakeDamage(damage);
+        }
+
         bulletPooler.ReturnToPool(this.gameObject);
     }
 }

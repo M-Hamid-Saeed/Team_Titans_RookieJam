@@ -9,7 +9,8 @@ public class pathCreator : MonoBehaviour
     private LineRenderer lineRenderer;
     public float distanceToPoint;
     public float lineBoundY;
-    public Transform towerPosition;
+    public Transform lookTarget;
+    public SoldierPooler soldierPooler;
     private List<Vector3> pathPoints = new List<Vector3>();
 
     private void Awake()
@@ -80,29 +81,35 @@ public class pathCreator : MonoBehaviour
     {
         if (pathPoints.Count <= 1) return;
 
-        Vector3 prevPoint = pathPoints[0];
-        for (int i = 1; i < pathPoints.Count; i++)
+        for (int i = 0; i < pathPoints.Count - 1; i++)
         {
-            Vector3 currentPoint = pathPoints[i];
-            float distance = Vector3.Distance(prevPoint, currentPoint);
+            Vector3 start = pathPoints[i];
+            Vector3 end = pathPoints[i + 1];
+            float distance = Vector3.Distance(start, end);
 
-            int numberOfSoldiers = Mathf.FloorToInt(distance / offset);
-            Vector3 direction = (currentPoint - prevPoint).normalized;
+            int numberOfSoldiers = Mathf.CeilToInt(distance / offset); // Round up to ensure coverage
+            Vector3 direction = (end - start).normalized;
 
-            Vector3 spawnPosition = prevPoint + direction;
-            GameObject soldier = Instantiate(soldierPrefab, spawnPosition, Quaternion.identity);
-           
-            Vector3 lookAtDirection = (towerPosition.position - soldier.transform.position).normalized;
-            float angle = Mathf.Atan2(lookAtDirection.y, lookAtDirection.x) * Mathf.Rad2Deg;
+            for (int j = 0; j < numberOfSoldiers; j++)
+            {
+                Vector3 spawnPosition = start + direction * (j * (distance / numberOfSoldiers));
+                GameObject soldier = soldierPooler.GetNew(spawnPosition);
 
-            
-            soldier.transform.rotation = Quaternion.Euler(0f, angle,0f );
+                // Calculate rotation to look towards the target
+                Vector3 lookAtDirection = (lookTarget.position - soldier.transform.position).normalized;
+                float angle = Mathf.Atan2(lookAtDirection.y, lookAtDirection.x) * Mathf.Rad2Deg;
+                Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
 
-            // Optionally, you can also set the rotation
-            // around the Y-axis to 0 (pitch) and the X-axis to 0 (roll)
-            //soldier.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                // Apply rotation to the soldier
+                Quaternion soldierRotation = soldier.transform.rotation;
+                soldierRotation.y = rotation.y;
+                soldierRotation.x = 0;
+                soldierRotation.z = 0;
 
-            prevPoint = currentPoint;
+                
+
+
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DamageableEntity : MonoBehaviour, IDamageable
@@ -10,11 +11,12 @@ public class DamageableEntity : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
     }
 
-    public virtual void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
+            Debug.Log("TAKING DAMAGE");
             Die();
         }
     }
@@ -32,6 +34,18 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     protected virtual void Die()
     {
         // Implement death logic here
-        gameObject.SetActive(false);
+        ObjectPooler.Instance?.Free(this.gameObject);
+        PlayParticles();
+    }
+    private void PlayParticles()
+    {
+        GameObject particle = ObjectPooler.Instance?.SpawnFromPool("EnemyDeath", this.transform.position, Quaternion.identity);
+        WaitForParticlePlay(particle);
+    }
+    IEnumerator WaitForParticlePlay(GameObject particle)
+    {
+        yield return new WaitForSeconds(.5f);
+        ObjectPooler.Instance?.Free(particle);
+
     }
 }

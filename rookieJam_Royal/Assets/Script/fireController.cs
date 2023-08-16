@@ -10,7 +10,6 @@ public class fireController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
             shootSystem.shoot();
     }
 }

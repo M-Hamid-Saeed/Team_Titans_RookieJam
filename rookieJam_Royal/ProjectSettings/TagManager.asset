@@ -13,6 +13,9 @@ TagManager:
   - PowerPositive
   - Drone
   - Enemy
+  - Bullet
+  - Soldier
+  - EnemyDeath
   layers:
   - Default
   - TransparentFX

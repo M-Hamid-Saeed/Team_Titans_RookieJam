@@ -4754,7 +4754,7 @@ GameObject:
   - component: {fileID: 417761080263594738}
   m_Layer: 0
   m_Name: Explosion Fire
-  m_TagString: Untagged
+  m_TagString: EnemyDeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
