@@ -49,7 +49,7 @@ public class InputManager : MonoBehaviour
             Horizontal = deltaPosition.x;
             Vertical = deltaPosition.y;
             prevMousePosition = Input.mousePosition;
-            Debug.Log(deltaPosition.y);
+            
             //Debug.Log(currentMousePosition);
         }
         if (Input.GetMouseButtonUp(0))

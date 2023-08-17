@@ -12,6 +12,8 @@ public class pathCreator : MonoBehaviour
     public Transform lookTarget;
     public SoldierPooler soldierPooler;
     private List<Vector3> pathPoints = new List<Vector3>();
+    [SerializeField] PlayerUpdateAIController playerAIController;
+  
 
     private void Awake()
     {
@@ -32,10 +34,16 @@ public class pathCreator : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo))
+            if (Physics.Raycast(ray, out hitInfo, targetLayerMask))
             {
+                Debug.Log(hitInfo.transform.tag);
                 Vector3 hit_info = hitInfo.point;
+                if (hitInfo.transform.tag == "base") 
+                    playerAIController.canAimMove = false;
+                else
+                    playerAIController.canAimMove = true;
                 hit_info.y = lineBoundY;
+                
                 if (DistanceToLastPoint(hit_info) > distanceToPoint)
 
                     DrawPath(hit_info);

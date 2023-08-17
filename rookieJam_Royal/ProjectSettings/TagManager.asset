@@ -6,16 +6,12 @@ TagManager:
   tags:
   - ground
   - Player Logic
-  - Coin
-  - OuterBoundary
-  - InnerBoundary
-  - PowerNegative
-  - PowerPositive
   - Drone
   - Enemy
   - Bullet
   - Soldier
   - EnemyDeath
+  - base
   layers:
   - Default
   - TransparentFX

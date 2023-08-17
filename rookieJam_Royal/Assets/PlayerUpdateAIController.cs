@@ -8,6 +8,13 @@ public class PlayerUpdateAIController : MonoBehaviour
     [SerializeField] Transform MissleAimPoint;
     [SerializeField] Transform MisslespawnLocation;
     [SerializeField] GameObject missle;
+    [SerializeField] InputManager input;
+    [SerializeField] Transform AimpointBullet;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float maxRotationX;
+    [SerializeField] float maxRotationY;
+    [SerializeField] float lerpFactor;
+    public bool canAimMove;
     // Update is called once per frame
     void Update()
     {
@@ -15,6 +22,8 @@ public class PlayerUpdateAIController : MonoBehaviour
         {
             soldier.GetComponent<fireController>().DoShoot();
         }
+        if(canAimMove)
+          LookRotation();
     }
     public void onMissleButtonPressed()
     {
@@ -22,8 +31,22 @@ public class PlayerUpdateAIController : MonoBehaviour
         Vector3 dir = MissleAimPoint.position - mis.transform.position;
         mis.GetComponent<Missile>().SetDirection(dir);
 
-       
-
     }
+    private void LookRotation()
+    {
 
+        float targetLookAmountX = input.Horizontal *moveSpeed;
+        float targetLookAmountY = -input.Vertical * moveSpeed;
+
+        targetLookAmountX += AimpointBullet.localPosition.x;
+        Vector3 lookDirection = new Vector3(targetLookAmountX,AimpointBullet.position.y, AimpointBullet.position.z);
+
+        // Quaternion rotTarget = Quaternion.LookRotation(lookDirection);
+        AimpointBullet.localPosition = Vector3.Lerp(AimpointBullet.position, lookDirection, lerpFactor * Time.deltaTime);
+
+        Quaternion rot = transform.rotation;
+        rot.x = Mathf.Clamp(rot.x, -maxRotationX, maxRotationX);
+        rot.y = Mathf.Clamp(rot.y, -maxRotationY, maxRotationY);
+        transform.rotation = rot;
+    }
 }
