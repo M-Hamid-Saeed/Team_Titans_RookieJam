@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ public class PlayerUpdateAIController : MonoBehaviour
     [SerializeField] float maxRotationX;
     [SerializeField] float maxRotationY;
     [SerializeField] float lerpFactor;
+<<<<<<< Updated upstream
     public bool canAimMove = false;
     public Transform lookTarget;
     // Update is called once per frame
@@ -34,6 +34,24 @@ public class PlayerUpdateAIController : MonoBehaviour
             soldierRotation.y = rotation.y;
             soldierRotation.x = rotation.x;
             soldierRotation.z = 0;
+=======
+    public Transform lookTarget;
+    public bool canAimMove;
+    // Update is called once per frame
+    void Update()
+    {
+        foreach (GameObject soldier in pooledSoldiersList)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                soldier.GetComponent<fireController>().DoShoot();
+                Vector3 lookAtDirection = (lookTarget.position - soldier.transform.localPosition).normalized;
+                    float angle = Mathf.Atan2(lookAtDirection.y, lookAtDirection.x) * Mathf.Rad2Deg;
+                    Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
+                    soldier.transform.localRotation = rotation;
+                
+            }
+>>>>>>> Stashed changes
         }
        
     }
