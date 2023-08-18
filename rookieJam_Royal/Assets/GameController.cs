@@ -12,21 +12,18 @@ public class GameController : MonoBehaviour
 
     public float timeDelay = 2.0f;
 
-    private void Awake()
+    private void Start()
     {
-        // Hide instruction panel initially
-        instructionPanel.SetActive(false);
-
         // Show play button and dark background
         playButton.SetActive(true);
         darkBackground.SetActive(true);
-
-        Debug.Log("Game Controller Running");
+        
+        // Hide instruction panel initially
+        instructionPanel.SetActive(false);
     }
 
     public void PlayGame()
     {
-        Debug.Log("Play Button Working");
         // Hide play button and dark background
         playButton.SetActive(false);
         darkBackground.SetActive(false);
