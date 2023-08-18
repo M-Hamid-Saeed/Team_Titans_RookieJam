@@ -7,17 +7,24 @@ public class Bullet : MonoBehaviour
     private Rigidbody rb;  // Reference to the Rigidbody component
     public float speed = 10.0f;
     private Vector3 direction;
+    private TrailRenderer trailRenderer;
     private float damage;
     private Vector3 hitPos;
     private float lifeTime = 2;
     [SerializeField] BulletPooler bulletPooler;
+    private bool hasCollided;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
     public void SetDirection(Vector3 direction)
     {
+        EnableTrail(true);
+        if (rb)
+            rb.velocity = Vector3.zero;
+        
         this.direction = direction;
     }
 
@@ -32,9 +39,11 @@ public class Bullet : MonoBehaviour
             //Debug.Log("Bullet Freed");
 
             bulletPooler.ReturnToPool(this.gameObject);
-            lifeTime = 5;
+            EnableTrail(false);
+            lifeTime = 3;
         }
     }
+   
 
     public void SetDamage(int damage)
     {
@@ -49,6 +58,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (hasCollided) // Already processed collision, ignore
+            return;
+
+        hasCollided = true; // Mark as collided
+
         IDamageable damageableEntity = collision.gameObject.GetComponent<IDamageable>();
         if (damageableEntity != null)
         {
@@ -56,6 +70,17 @@ public class Bullet : MonoBehaviour
         }
 
         bulletPooler.ReturnToPool(this.gameObject);
+        hasCollided = false;
+        EnableTrail(false);
+    }
+
+    private void EnableTrail(bool state)
+    {
+        if (trailRenderer)
+        {
+            trailRenderer.Clear();
+            trailRenderer.enabled = state;
+        }
     }
 }
 

@@ -14,16 +14,17 @@ public class PlayerUpdateAIController : MonoBehaviour
     [SerializeField] float maxRotationX;
     [SerializeField] float maxRotationY;
     [SerializeField] float lerpFactor;
-    public bool canAimMove;
+    public bool canAimMove = false;
     // Update is called once per frame
     void Update()
     {
-        foreach(GameObject soldier in pooledSoldiersList)
+        if (canAimMove)
+            LookRotation();
+        foreach (GameObject soldier in pooledSoldiersList)
         {
             soldier.GetComponent<fireController>().DoShoot();
         }
-        if(canAimMove)
-          LookRotation();
+       
     }
     public void onMissleButtonPressed()
     {
@@ -44,9 +45,9 @@ public class PlayerUpdateAIController : MonoBehaviour
         // Quaternion rotTarget = Quaternion.LookRotation(lookDirection);
         AimpointBullet.localPosition = Vector3.Lerp(AimpointBullet.position, lookDirection, lerpFactor * Time.deltaTime);
 
-        Quaternion rot = transform.rotation;
+        Vector3 rot = transform.localPosition;
         rot.x = Mathf.Clamp(rot.x, -maxRotationX, maxRotationX);
         rot.y = Mathf.Clamp(rot.y, -maxRotationY, maxRotationY);
-        transform.rotation = rot;
+        transform.localPosition = rot;
     }
 }

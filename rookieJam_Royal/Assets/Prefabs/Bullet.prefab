@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca12e53fb5887248b12dc50ab74e4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1500
+  speed: 4500
   bulletPooler: {fileID: 2082072725811430167, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
 --- !u!1 &7953778963703433519
 GameObject:

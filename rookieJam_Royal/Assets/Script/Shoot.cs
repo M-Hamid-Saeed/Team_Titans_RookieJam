@@ -51,14 +51,9 @@ public class Shoot : MonoBehaviour
             // Cast the GameObject to a Bullet instance
             Bullet bulletClone = bulletObject.GetComponent<Bullet>();
 
-            if (bulletClone == null)
-            {
-                // If the casting fails, return the bullet object to the pool and continue
-                bulletPooler.ReturnToPool(bulletObject);
-                yield return null;
-            }
+           
 
-            Vector3 newSpreadAimPoint = new Vector3(aimPoint.position.x + Random.Range(-.5f, .5f), aimPoint.position.y, aimPoint.position.x);
+            Vector3 newSpreadAimPoint = new Vector3(aimPoint.position.x + Random.Range(-1f, 1f), aimPoint.position.y, aimPoint.position.x);
             bulletClone.SetDamage(bulletDamage);
             bulletClone.SetHitPosition(newSpreadAimPoint);
             bulletClone.SetDirection(( newSpreadAimPoint- muzzlePoint.position).normalized);

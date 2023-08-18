@@ -38,16 +38,14 @@ public class pathCreator : MonoBehaviour
             {
                 Debug.Log(hitInfo.transform.tag);
                 Vector3 hit_info = hitInfo.point;
-                if (hitInfo.transform.tag == "base") 
-                    playerAIController.canAimMove = false;
-                else
-                    playerAIController.canAimMove = true;
                 hit_info.y = lineBoundY;
                 
                 if (DistanceToLastPoint(hit_info) > distanceToPoint)
 
                     DrawPath(hit_info);
             }
+            else
+                playerAIController.canAimMove = true;
 
 
 
@@ -75,6 +73,7 @@ public class pathCreator : MonoBehaviour
         lineRenderer.positionCount = pathPoints.Count;
 
         lineRenderer.SetPositions(pathPoints.ToArray());
+        playerAIController.canAimMove = false;
         Debug.Log("LINE DRAWWWW@");
 
     }

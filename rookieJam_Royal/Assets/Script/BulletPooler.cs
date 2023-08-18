@@ -14,6 +14,7 @@ public class BulletPooler : MonoBehaviour
     }
     public void ReturnToPool(GameObject bulletObject)
     {
+        Debug.Log("BULLET POOLED");
         ObjectPooler.Instance?.Free(bulletObject);
     }
 }

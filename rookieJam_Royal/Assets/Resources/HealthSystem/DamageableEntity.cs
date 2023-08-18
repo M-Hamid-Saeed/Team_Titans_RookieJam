@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        transform.DOShakeRotation(1f, 20, 10, 50,true);
+        //transform.DOScale(.5f, .2f);
         if (currentHealth <= 0)
         {
             Debug.Log("TAKING DAMAGE");

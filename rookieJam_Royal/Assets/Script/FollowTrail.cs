@@ -10,7 +10,7 @@ public class FollowTrail : MonoBehaviour
     private float initialPositionY;
     private Rigidbody rb;
     public GameObject head;
-    public PlayerController controller;
+   // public PlayerController controller;
 
     [Header("Spawn Section")]
     private List<Vector3> positionList = new List<Vector3>();
@@ -68,7 +68,7 @@ public class FollowTrail : MonoBehaviour
             Vector3 targetPosition = new Vector3(moveToPosition.x, moveToPosition.y, moveToPosition.z );
 
             part.transform.position = Vector3.Lerp(lastAdded_BodyPartPosition, targetPosition, Time.deltaTime * followSpeed);
-            Vector3.Slerp(part.transform.forward, controller.moveDirection, Time.deltaTime * rotationSpeed);
+         //   Vector3.Slerp(part.transform.forward, controller.moveDirection, Time.deltaTime * rotationSpeed);
             moveToPosition = part.transform.position;
             offsetMultiplier += 0.2f;
         }

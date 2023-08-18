@@ -66,7 +66,9 @@ public class ObjectPooler : MonoBehaviour
             return;
 
         prefab.SetActive(false);
-        if(poolDictionary.ContainsKey(prefab.tag))
+        if (poolDictionary.ContainsKey(prefab.tag))
+        {
             poolDictionary[prefab.tag].Enqueue(prefab);
+        }
     }
 }
