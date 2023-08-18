@@ -10,6 +10,7 @@ public class BulletPooler : MonoBehaviour
 
     public GameObject GetNew(Vector3 spawnPos)
     {
+        Debug.Log("GET NEW");
         return ObjectPooler.Instance?.SpawnFromPool("Bullet", spawnPos,Quaternion.Euler(new Vector3(0, 0, 0)));
     }
     public void ReturnToPool(GameObject bulletObject)

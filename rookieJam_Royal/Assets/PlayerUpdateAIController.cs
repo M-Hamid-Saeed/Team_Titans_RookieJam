@@ -24,8 +24,11 @@ public class PlayerUpdateAIController : MonoBehaviour
             LookRotation();
         foreach (GameObject soldier in pooledSoldiersList)
         {
-            soldier.GetComponent<fireController>().DoShoot();
-            soldier.transform.LookAt(AimpointBullet);
+            if (Input.GetMouseButton(0))
+            {
+                soldier.GetComponent<fireController>().DoShoot();
+                soldier.transform.LookAt(AimpointBullet);
+            }
 
         }
        
@@ -49,10 +52,10 @@ public class PlayerUpdateAIController : MonoBehaviour
         // Quaternion rotTarget = Quaternion.LookRotation(lookDirection);
         AimpointBullet.localPosition = Vector3.Lerp(AimpointBullet.position, lookDirection, lerpFactor * Time.deltaTime);
 
-        Vector3 rot = AimpointBullet.position;
-        rot.x = Mathf.Clamp(rot.x, 25, 40);
+        Vector3 rot = AimpointBullet.localPosition;
+        rot.x = Mathf.Clamp(rot.x, maxRotationX, maxRotationY);
        // rot.y = AimpointBullet.position.y;
         //rot.y = Mathf.Clamp(rot.y, 25, 42);
-        AimpointBullet.position = rot;
+        AimpointBullet.localPosition = rot;
     }
 }

@@ -46,6 +46,7 @@ public class Shoot : MonoBehaviour
         while (canShot) // Keep shooting continuously
         {
             
+            
             GameObject bulletObject = bulletPooler.GetNew(muzzlePos); // Get a bullet GameObject from the pooler
             // Cast the GameObject to a Bullet instance
             Bullet bulletClone = bulletObject.GetComponent<Bullet>();
