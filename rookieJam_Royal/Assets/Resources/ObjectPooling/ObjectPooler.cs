@@ -33,8 +33,6 @@ public class ObjectPooler : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.transform.SetParent(this.transform);
-                if (obj.gameObject.CompareTag("Soldier"))
-                    obj.transform.SetParent(this.transform.GetChild(0));
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }

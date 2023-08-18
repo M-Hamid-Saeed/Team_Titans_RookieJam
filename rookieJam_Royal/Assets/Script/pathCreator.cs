@@ -6,7 +6,6 @@ public class pathCreator : MonoBehaviour
     public GameObject soldierPrefab;
     public float offset = 1.0f; // Distance between soldiers on the path
     public LayerMask targetLayerMask;
-
     private LineRenderer lineRenderer;
     public float distanceToPoint;
     public float lineBoundY;
@@ -46,13 +45,9 @@ public class pathCreator : MonoBehaviour
 
                     DrawPath(hit_info);
             }
-<<<<<<< Updated upstream
             else
                 playerAIController.canAimMove = true;
 
-=======
-           
->>>>>>> Stashed changes
 
 
 
@@ -109,19 +104,7 @@ public class pathCreator : MonoBehaviour
                 GameObject soldier = soldierPooler.GetNew(spawnPosition);
 
                 // Calculate rotation to look towards the target
-<<<<<<< Updated upstream
                
-=======
-                /*Vector3 lookAtDirection = (lookTarget.position - soldier.transform.position).normalized;
-                float angle = Mathf.Atan2(lookAtDirection.y, lookAtDirection.x) * Mathf.Rad2Deg;
-                Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
-
-                // Apply rotation to the soldier
-                Quaternion soldierRotation = soldier.transform.parent.localRotation;
-                soldierRotation.y = rotation.y;
-                soldierRotation.x = rotation.x;
-                soldierRotation.z = 0;*/
->>>>>>> Stashed changes
 
 
                 

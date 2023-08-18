@@ -56,8 +56,7 @@ public class Shoot : MonoBehaviour
             Vector3 newSpreadAimPoint = new Vector3(aimPoint.position.x + Random.Range(-1f, 1f), aimPoint.position.y, aimPoint.position.x);
             bulletClone.SetDamage(bulletDamage);
             bulletClone.SetHitPosition(newSpreadAimPoint);
-            Vector3 offsetMuzzlePosition = new Vector3(muzzlePoint.position.x - 1f, muzzlePoint.position.y, muzzlePoint.position.z);
-            bulletClone.SetDirection(( newSpreadAimPoint- offsetMuzzlePosition).normalized);
+            bulletClone.SetDirection(( newSpreadAimPoint- muzzlePoint.position).normalized);
 
             yield return fireRateTime; // Wait for the fire rate before shooting again
             canShot = false;

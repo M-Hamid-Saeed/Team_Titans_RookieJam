@@ -4701,17 +4701,10 @@ MonoBehaviour:
   missle: {fileID: 1140185905662073914, guid: fb3f46800d89f714fa8299d399302a48, type: 3}
   input: {fileID: 1266934497}
   AimpointBullet: {fileID: 1962451384}
-<<<<<<< Updated upstream
   moveSpeed: 6
   maxRotationX: 6
   maxRotationY: 3
   lerpFactor: 3.5
-=======
-  moveSpeed: 8
-  maxRotationX: 2
-  maxRotationY: 2
-  lerpFactor: 9
->>>>>>> Stashed changes
   canAimMove: 0
 --- !u!114 &1266934497
 MonoBehaviour:
@@ -4728,11 +4721,6 @@ MonoBehaviour:
   touchDelta: {x: 0, y: 0, z: 0}
   senstivity: 8
   isMousePressed: 0
---- !u!4 &1266934499 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2082072725811430164, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
-  m_PrefabInstance: {fileID: 1266934487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1283280451
 GameObject:
   m_ObjectHideFlags: 0
@@ -4865,7 +4853,6 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  playerParent: {fileID: 1443782815}
   distanceToPoint: 2
   lineBoundY: 1
   lookTarget: {fileID: 1962451384}
@@ -4994,7 +4981,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
-<<<<<<< Updated upstream
 --- !u!1001 &1419927336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5052,39 +5038,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e357166bcb2a54e858a8498310d4fb, type: 3}
-=======
---- !u!1 &1443782814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1443782815}
-  m_Layer: 0
-  m_Name: Soldiers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1443782815
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443782814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.85, y: 6.5, z: 25.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1266934499}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!64 &1491050989
 MeshCollider:
   m_ObjectHideFlags: 0
