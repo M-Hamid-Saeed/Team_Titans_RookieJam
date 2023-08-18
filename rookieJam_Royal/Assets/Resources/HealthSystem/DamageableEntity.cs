@@ -6,7 +6,8 @@ public class DamageableEntity : MonoBehaviour, IDamageable
 {
     public float maxHealth = 100f;
     protected float currentHealth;
-
+    [SerializeField]
+    protected CameraShake_Management CameraShaker;
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -36,8 +37,10 @@ public class DamageableEntity : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
-        // Implement death logic here
+       
         ObjectPooler.Instance?.Free(this.gameObject);
+        CameraShaker.ShakeCamera();
+        EnemySpawner.AddKillCount();
         PlayParticles();
     }
     private void PlayParticles()

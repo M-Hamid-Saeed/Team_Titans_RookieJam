@@ -67,6 +67,7 @@ public class Bullet : MonoBehaviour
         if (damageableEntity != null)
         {
             damageableEntity.TakeDamage(damage);
+            Vibration.VibrateNope();
         }
 
         bulletPooler.ReturnToPool(this.gameObject);

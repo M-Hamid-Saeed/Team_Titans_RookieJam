@@ -11,6 +11,7 @@ public class Shoot : MonoBehaviour
 	private WaitForSeconds fireRateTime;
     private IEnumerator waitForHold;
 	public Transform muzzlePoint;
+    private Vector3 muzzlePos;
 	public Transform aimPoint;
     private bool canShot = false;
     // Start is called before the fi
@@ -18,6 +19,7 @@ public class Shoot : MonoBehaviour
     void Start()
     {
 		InitializeWeapon();
+        Vibration.Init();
     }
 
     
@@ -28,6 +30,8 @@ public class Shoot : MonoBehaviour
 		bulletDamage = firingData.dataSheet.damage;
 		fireRateTime = new WaitForSeconds(firingData.dataSheet.fireRate);
         waitForHold = new WaitUntil(() => canShot);
+     
+        muzzlePos = new Vector3(muzzlePoint.position.x -1f, muzzlePoint.position.y, muzzlePoint.position.z);
 
 		StartCoroutine(BulletShoot());
 	}
@@ -41,19 +45,14 @@ public class Shoot : MonoBehaviour
         yield return waitForHold;
         while (canShot) // Keep shooting continuously
         {
-            GameObject bulletObject = bulletPooler.GetNew(muzzlePoint.position); // Get a bullet GameObject from the pooler
-
-            if (bulletObject == null)
-            {
-                yield break; // Exit the coroutine if no bullet is available
-            }
-
+            
+            GameObject bulletObject = bulletPooler.GetNew(muzzlePos); // Get a bullet GameObject from the pooler
             // Cast the GameObject to a Bullet instance
             Bullet bulletClone = bulletObject.GetComponent<Bullet>();
 
            
-
-            Vector3 newSpreadAimPoint = new Vector3(aimPoint.position.x + Random.Range(-1f, 1f), aimPoint.position.y, aimPoint.position.x);
+            
+            Vector3 newSpreadAimPoint = new Vector3(aimPoint.position.x + Random.Range(-2f, 0f), aimPoint.position.y, aimPoint.position.x);
             bulletClone.SetDamage(bulletDamage);
             bulletClone.SetHitPosition(newSpreadAimPoint);
             bulletClone.SetDirection(( newSpreadAimPoint- muzzlePoint.position).normalized);

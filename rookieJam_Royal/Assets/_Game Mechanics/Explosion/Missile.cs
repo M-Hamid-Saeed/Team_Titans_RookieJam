@@ -7,6 +7,7 @@ public class Missile : Explosion_Base
     private bool canShoot;
     private Rigidbody rb;
     // [SerializeField] SoundType missleLaunchSound;
+    public AudioClip explosionSound;
 
     private bool canMove = false;
     private Vector3 direction;
@@ -34,11 +35,14 @@ public class Missile : Explosion_Base
 
     private void OnCollisionEnter(Collision collision)
     {
+       
         TakeDamage(1);
+       
     }
     public void SetDirection(Vector3 direction)
     {
         this.direction = direction;
     }
+
 }
 

@@ -245,3 +245,5 @@ MonoBehaviour:
   CameraShaker: {fileID: 6220568089041449271, guid: 74bd595431c2f874a90846a832da07ca, type: 3}
   currentHealth: 0
   speed: 50
+  explosionSound: {fileID: 8300000, guid: a17d9d8d995332f45941b6fe37664d37, type: 3}
+  audioSource: {fileID: 7712078991174200389, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}

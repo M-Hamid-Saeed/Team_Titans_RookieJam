@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.1023873, g: 0.94514877, b: 0.82215434, a: 1}
+  m_IndirectSpecularColor: {r: 1.1076803, g: 0.96577734, b: 0.80517155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -236,8 +236,8 @@ MonoBehaviour:
   - {fileID: 804420526}
   - {fileID: 636930071}
   - {fileID: 1283280452}
-  numberOfEnemiesInWave: 30
-  timeBetweenSpawns: 3
+  numberOfEnemiesInWave: 20
+  timeBetweenSpawns: 2
 --- !u!135 &71749978
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4701,10 +4701,10 @@ MonoBehaviour:
   missle: {fileID: 1140185905662073914, guid: fb3f46800d89f714fa8299d399302a48, type: 3}
   input: {fileID: 1266934497}
   AimpointBullet: {fileID: 1962451384}
-  moveSpeed: 6
-  maxRotationX: 6
-  maxRotationY: 3
-  lerpFactor: 3.5
+  moveSpeed: 8
+  maxRotationX: 2
+  maxRotationY: 0.5
+  lerpFactor: 10
   canAimMove: 0
 --- !u!114 &1266934497
 MonoBehaviour:
@@ -5919,7 +5919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6623486979058743487, guid: 488a52cd06d3c88428cb6ca7482219fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.68
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6623486979058743487, guid: 488a52cd06d3c88428cb6ca7482219fb, type: 3}
       propertyPath: m_LocalPosition.y
