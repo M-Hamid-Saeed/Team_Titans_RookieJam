@@ -31,7 +31,7 @@ public class Shoot : MonoBehaviour
 		fireRateTime = new WaitForSeconds(firingData.dataSheet.fireRate);
         waitForHold = new WaitUntil(() => canShot);
      
-        muzzlePos = new Vector3(muzzlePoint.position.x -1f, muzzlePoint.position.y, muzzlePoint.position.z);
+        muzzlePos = new Vector3(muzzlePoint.position.x - 1f, muzzlePoint.position.y, muzzlePoint.position.z);
 
 		StartCoroutine(BulletShoot());
 	}
