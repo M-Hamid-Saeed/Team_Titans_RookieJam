@@ -58,10 +58,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasCollided) // Already processed collision, ignore
+      /*  if (hasCollided) // Already processed collision, ignore
             return;
 
-        hasCollided = true; // Mark as collided
+        hasCollided = true; // Mark as collided*/
 
         IDamageable damageableEntity = collision.gameObject.GetComponent<IDamageable>();
         if (damageableEntity != null)

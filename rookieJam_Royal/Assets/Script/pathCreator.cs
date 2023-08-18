@@ -36,6 +36,7 @@ public class pathCreator : MonoBehaviour
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo, targetLayerMask))
             {
+                playerAIController.canAimMove = false;
                 Debug.Log(hitInfo.transform.tag);
                 Vector3 hit_info = hitInfo.point;
                 hit_info.y = lineBoundY;
@@ -103,15 +104,7 @@ public class pathCreator : MonoBehaviour
                 GameObject soldier = soldierPooler.GetNew(spawnPosition);
 
                 // Calculate rotation to look towards the target
-                Vector3 lookAtDirection = (lookTarget.position - soldier.transform.position).normalized;
-                float angle = Mathf.Atan2(lookAtDirection.y, lookAtDirection.x) * Mathf.Rad2Deg;
-                Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
-
-                // Apply rotation to the soldier
-                Quaternion soldierRotation = soldier.transform.rotation;
-                soldierRotation.y = rotation.y;
-                soldierRotation.x = rotation.x;
-                soldierRotation.z = 0;
+               
 
 
                 

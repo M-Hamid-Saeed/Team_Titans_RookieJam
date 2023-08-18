@@ -15,6 +15,7 @@ public class PlayerUpdateAIController : MonoBehaviour
     [SerializeField] float maxRotationY;
     [SerializeField] float lerpFactor;
     public bool canAimMove = false;
+    public Transform lookTarget;
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +24,16 @@ public class PlayerUpdateAIController : MonoBehaviour
         foreach (GameObject soldier in pooledSoldiersList)
         {
             soldier.GetComponent<fireController>().DoShoot();
+          
+            Vector3 lookAtDirection = (lookTarget.position - soldier.transform.position).normalized;
+            float angle = Mathf.Atan2(lookAtDirection.y, lookAtDirection.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
+
+            // Apply rotation to the soldier
+            Quaternion soldierRotation = soldier.transform.rotation;
+            soldierRotation.y = rotation.y;
+            soldierRotation.x = rotation.x;
+            soldierRotation.z = 0;
         }
        
     }
