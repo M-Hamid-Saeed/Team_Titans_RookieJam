@@ -17,7 +17,7 @@ public class Explosion_Base : MonoBehaviour, IDamageable
     //[SerializeField]  SoundType ExplosionSound;
     [SerializeField] protected float volume;
     [SerializeField] protected CameraShake_Management CameraShaker;
-    public AudioSource audioSource;
+  
     public float currentHealth;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class Explosion_Base : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage)
     {
-        audioSource.Play();
+        
         if (damage <= MaxDamageTaken)
             currentHealth -= damage;
         else
@@ -78,6 +78,7 @@ public class Explosion_Base : MonoBehaviour, IDamageable
 
     public void PlayParticle_Sound()
     {
+        FindObjectOfType<AudioManager>().Play("explosion");
         GameObject particle = Instantiate(ExplosionParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
        
         Destroy(particle, 1f);

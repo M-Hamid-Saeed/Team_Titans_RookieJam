@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     public EnemySpawner enemySpawner;
 
-    public float timeDelay = 2.0f;
+    public float timeDelay = 1.5f;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("Play Button Working");
+        FindObjectOfType<AudioManager>().Play("click");
         // Hide play button and dark background
         playButton.SetActive(false);
         darkBackground.SetActive(false);
@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        FindObjectOfType<AudioManager>().Play("click");
         darkBackground.SetActive(false);
         instructionPanel.SetActive(false);
         
