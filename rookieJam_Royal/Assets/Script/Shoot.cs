@@ -50,13 +50,15 @@ public class Shoot : MonoBehaviour
             GameObject bulletObject = bulletPooler.GetNew(muzzlePos); // Get a bullet GameObject from the pooler
             // Cast the GameObject to a Bullet instance
             Bullet bulletClone = bulletObject.GetComponent<Bullet>();
-
+            bulletClone.SpawnPoint(muzzlePoint);
            
             
-            Vector3 newSpreadAimPoint = new Vector3(aimPoint.position.x + Random.Range(-2f, 0f), aimPoint.position.y, aimPoint.position.x);
+            Vector3 newSpreadAimPoint = new Vector3(aimPoint.position.x + Random.Range(-.5f, .2f), aimPoint.position.y, aimPoint.position.x);
+           
             bulletClone.SetDamage(bulletDamage);
             bulletClone.SetHitPosition(newSpreadAimPoint);
             bulletClone.SetDirection(( newSpreadAimPoint- muzzlePoint.position).normalized);
+            
 
             yield return fireRateTime; // Wait for the fire rate before shooting again
             canShot = false;

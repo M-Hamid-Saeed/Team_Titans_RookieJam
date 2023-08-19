@@ -12,7 +12,9 @@ public class Bullet : MonoBehaviour
     private Vector3 hitPos;
     private float lifeTime = 2;
     [SerializeField] BulletPooler bulletPooler;
-    private bool hasCollided;
+   
+    [SerializeField] SoldierPooler soldierPooler;
+    private Transform bulletSpawnPoint;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -69,9 +71,13 @@ public class Bullet : MonoBehaviour
             damageableEntity.TakeDamage(damage);
             Vibration.VibrateNope();
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            soldierPooler.ReturnToPool(bulletSpawnPoint.gameObject);
+        }
 
         bulletPooler.ReturnToPool(this.gameObject);
-        hasCollided = false;
+        
         EnableTrail(false);
     }
 
@@ -82,6 +88,12 @@ public class Bullet : MonoBehaviour
             trailRenderer.Clear();
             trailRenderer.enabled = state;
         }
+    }
+    public void SpawnPoint(Transform pos)
+    {
+        Debug.Log(pos.gameObject
+            );
+        bulletSpawnPoint = pos;
     }
 }
 

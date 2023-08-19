@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerUpdateAIController : MonoBehaviour
 {
-   public List<GameObject> pooledSoldiersList = new List<GameObject>();
+    private Dictionary<int, GameObject> pooledSoldiersDictionary = new Dictionary<int, GameObject>();
     [SerializeField] Transform MissleAimPoint;
     [SerializeField] Transform MisslespawnLocation;
     [SerializeField] GameObject missle;
@@ -15,25 +15,43 @@ public class PlayerUpdateAIController : MonoBehaviour
     [SerializeField] float maxRotationY;
     [SerializeField] float lerpFactor;
     public bool canAimMove = false;
-    
 
     // Update is called once per frame
     void Update()
     {
         if (canAimMove)
             LookRotation();
-        foreach (GameObject soldier in pooledSoldiersList)
+
+        // Iterate through the pooled soldiers dictionary's values
+        foreach (var soldierEntry in pooledSoldiersDictionary.Values)
         {
             if (Input.GetMouseButton(0))
             {
-                soldier.GetComponent<fireController>().DoShoot();
-                soldier.transform.LookAt(AimpointBullet);
+                soldierEntry.GetComponent<fireController>().DoShoot();
+                soldierEntry.transform.LookAt(AimpointBullet);
             }
-
         }
-       
     }
-    public void onMissleButtonPressed()
+
+    // ... (other methods)
+
+    // Method to add a soldier to the dictionary
+    public void AddSoldierToDictionary(int uniqueID, GameObject soldier)
+    {
+        pooledSoldiersDictionary.Add(uniqueID, soldier);
+    }
+
+    // Method to remove a soldier from the dictionary
+    public void RemoveSoldierFromDictionary(int uniqueID)
+    {
+        if (pooledSoldiersDictionary.ContainsKey(uniqueID))
+        {
+            pooledSoldiersDictionary.Remove(uniqueID);
+        }
+    }
+
+
+public void onMissleButtonPressed()
     {
         GameObject mis = Instantiate(missle, new Vector3(MisslespawnLocation.position.x, MisslespawnLocation.position.y, MisslespawnLocation.position.z), Quaternion.identity);
         Vector3 dir = MissleAimPoint.position - mis.transform.position;

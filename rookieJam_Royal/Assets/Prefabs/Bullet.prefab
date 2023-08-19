@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4500
   bulletPooler: {fileID: 2082072725811430167, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
+  soldierPooler: {fileID: 1266934493, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
 --- !u!1 &7953778963703433519
 GameObject:
   m_ObjectHideFlags: 0
