@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -7,6 +8,8 @@ public class GameController : MonoBehaviour
     public GameObject playButton;
     public GameObject darkBackground;
     public GameObject instructionPanel;
+    public GameObject PlayAgainPanel;
+
 
     public EnemySpawner enemySpawner;
 
@@ -21,7 +24,6 @@ public class GameController : MonoBehaviour
         playButton.SetActive(true);
         darkBackground.SetActive(true);
 
-        Debug.Log("Game Controller Running");
     }
 
     public void PlayGame()
@@ -48,7 +50,18 @@ public class GameController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("click");
         darkBackground.SetActive(false);
         instructionPanel.SetActive(false);
-        
+
         enemySpawner.EnableSpawning();
+    }
+
+    public void PlayAgain()
+    {
+        darkBackground.SetActive(true);
+        PlayAgainPanel.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Demo");
     }
 }

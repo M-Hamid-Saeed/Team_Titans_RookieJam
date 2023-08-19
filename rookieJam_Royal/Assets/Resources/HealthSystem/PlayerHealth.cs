@@ -10,4 +10,11 @@ public class PlayerHealth : DamageableEntity
             TakeDamage(10f);  // Example: If an enemy enters the player's trigger zone, the player takes damage
         }
     }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
 }
+

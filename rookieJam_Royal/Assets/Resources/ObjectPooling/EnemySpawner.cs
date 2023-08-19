@@ -7,11 +7,10 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPoints;
 
     public int numberOfEnemiesInWave = 5;
-    private static int totalEnemies;
     public float timeBetweenSpawns = 1.0f;
 
-    private bool canSpawn = false; // Control whether the spawner can spawn enemies
-    public static int enemyKillCount = 0;
+    public bool canSpawn = false; // Control whether the spawner can spawn enemies
+    public int enemyKillCount = 0;
     private void Update()
     {
         // Check if the spawner can spawn enemies
@@ -20,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(SpawnEnemyWave());
             canSpawn = false; // Disable spawning until the next button click
         }
-        totalEnemies = numberOfEnemiesInWave;
+        
     }
 
     private IEnumerator SpawnEnemyWave()
@@ -44,18 +43,5 @@ public class EnemySpawner : MonoBehaviour
     public void EnableSpawning()
     {
         canSpawn = true;
-    }
- 
-    public static void AddKillCount()
-    {
-
-        enemyKillCount++;
-        Debug.Log(enemyKillCount);
-        if (enemyKillCount == totalEnemies)
-        {
-            Debug.Log("LEVEL PASSED");
-            return;
-        }
-        
     }
 }

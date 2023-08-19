@@ -40,7 +40,7 @@ public class DamageableEntity : MonoBehaviour, IDamageable
        
         ObjectPooler.Instance?.Free(this.gameObject);
         CameraShaker.ShakeCamera();
-        EnemySpawner.AddKillCount();
+        
         PlayParticles();
     }
     private void PlayParticles()
