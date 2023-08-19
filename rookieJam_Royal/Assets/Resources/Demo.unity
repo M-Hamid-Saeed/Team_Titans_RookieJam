@@ -5922,11 +5922,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1028415454, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1028415454, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1259856945, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5984,10 +5984,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 13.826
       objectReference: {fileID: 0}
-    - target: {fileID: 1678827583025700823, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1753311294993227664, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -6024,12 +6020,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 760487211}
-    - target: {fileID: 4599591918699038775, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
-      propertyPath: m_text
-      value: Lead the Titans Squad, Commander! Defend our base by drawing soldiers
-        into action. Annihilate the alien onslaught to secure humanity's future in
-        this fight for survival.
-      objectReference: {fileID: 0}
     - target: {fileID: 6128371720651146433, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6080,7 +6070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657449149737141398, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
