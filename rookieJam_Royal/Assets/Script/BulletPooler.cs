@@ -7,10 +7,7 @@ public class BulletPooler : MonoBehaviour
     [SerializeField] Bullet bullet;
 
 
-    private void Awake()
-    {
-        
-    }
+
     public GameObject GetNew(Vector3 spawnPos)
     {
         Debug.Log("GET NEW");

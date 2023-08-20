@@ -17,7 +17,6 @@ public class ObjectPooler : MonoBehaviour
     {
         
         Instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public List<Pool> pools;

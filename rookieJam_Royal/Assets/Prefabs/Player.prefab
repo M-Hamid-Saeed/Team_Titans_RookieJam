@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingData: {fileID: 11400000, guid: 3b571f65c7b21e94fa68f2594578292e, type: 2}
-  bulletPooler: {fileID: 2082072725811430167, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
+  bulletPooler: {fileID: 0}
   muzzlePoint: {fileID: 1643300904889657019}
-  aimPoint: {fileID: 6623486979058743487, guid: 488a52cd06d3c88428cb6ca7482219fb, type: 3}
+  aimPoint: {fileID: 0}
 --- !u!114 &1643300904889657020
 MonoBehaviour:
   m_ObjectHideFlags: 0
