@@ -1,40 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public GameObject environment1;
+    public GameObject environment2;
 
-    public int numberOfEnemiesInWave;
-
-    // Property to set and get the number of enemies in the wave
-   
+    private static LevelManager instance;
 
     private void Awake()
     {
-            EnemySpawner.OnLevelComplete += OnLevelComplete;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void OnLevelComplete()
+    public void ReloadSceneWithEnvironmentsSwitched()
     {
-        StartCoroutine(waitForSceneLoad());
         
-        
+        SceneManager.LoadScene("Demo");
+        SwitchEnvironments();
     }
-    private  IEnumerator waitForSceneLoad()
+
+
+    public void SwitchEnvironments()
     {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // Update the number of enemies in the wave
-        AudioManager.instance.enemySpawner.numberOfEnemiesInWave = numberOfEnemiesInWave;
-
-        // Save any necessary data here if needed
-
-
-
-        Instantiate(AudioManager.instance.Environment2.gameObject, this.transform.position, Quaternion.identity);
-        //Destroy(AudioManager.instance.Environment1);
-
+        environment1.SetActive(false);
+        environment2.SetActive(false);
     }
 }

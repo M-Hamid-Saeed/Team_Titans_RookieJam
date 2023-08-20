@@ -11,21 +11,20 @@ public class GameController : MonoBehaviour
     public GameObject PlayAgainPanel;
     public GameObject NextLevelPanel;
 
-
-
     public EnemySpawner enemySpawner;
 
-    public float timeDelay = 1.5f;
+    public float timeDelay = 1.0f;
 
     private void Awake()
     {
+        EnemySpawner.OnLevelComplete += OnLevelCompleteHandler;
+
         // Hide instruction panel initially
         instructionPanel.SetActive(false);
 
         // Show play button and dark background
         playButton.SetActive(true);
         darkBackground.SetActive(true);
-
     }
 
     public void PlayGame()
@@ -44,7 +43,6 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(timeDelay);
         darkBackground.SetActive(true);
         instructionPanel.SetActive(true);
-
     }
 
     public void StartGame()
@@ -65,9 +63,12 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("Demo");
-    }   
-    public void NextLevel()
+    }
+
+    public void OnLevelCompleteHandler()
     {
-        NextLevelPanel.SetActive(true); 
+        FindObjectOfType<AudioManager>().Play("click");
+        darkBackground.SetActive(true);
+        NextLevelPanel.SetActive(true);
     }
 }
