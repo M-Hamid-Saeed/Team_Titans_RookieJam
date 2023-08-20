@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
-        //SceneManager.LoadScene("Demo");
+        SceneManager.LoadScene("Demo");
     }
 
     public void OnLevelCompleteHandler()
