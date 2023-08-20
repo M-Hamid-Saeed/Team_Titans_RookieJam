@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             // DontDestroyOnLoad(Environment1);
-            //DontDestroyOnLoad(enemySpawner.gameObject);
+            DontDestroyOnLoad(enemySpawner.gameObject);
         }
         else
         {

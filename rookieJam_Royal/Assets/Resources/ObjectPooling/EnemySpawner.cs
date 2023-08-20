@@ -21,11 +21,13 @@ public class EnemySpawner : MonoBehaviour
         //{
 
         //  Debug.Log()
+        
         StartCoroutine(SpawnEnemyWave());
         //canSpawn = false;// Disable spawning until the next button click
         //}
         totalEnemies = numberOfEnemiesInWave;
         Debug.Log(totalEnemies);
+
         
     }
     private IEnumerator SpawnEnemyWave()
