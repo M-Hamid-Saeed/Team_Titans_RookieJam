@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8091448771243570094}
   - component: {fileID: 5451293868547688757}
   - component: {fileID: 8708946106361011776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca12e53fb5887248b12dc50ab74e4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4500
+  speed: 4000
   bulletPooler: {fileID: 2082072725811430167, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
   soldierPooler: {fileID: 1266934493, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
 --- !u!1 &7953778963703433519
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 952820715078329413}
   - component: {fileID: 4321996059319555016}
   - component: {fileID: 142366362702755115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

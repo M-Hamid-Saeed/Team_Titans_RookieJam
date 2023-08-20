@@ -9,19 +9,26 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+    public GameObject Environment1;
+    public GameObject Environment2;
+    public EnemySpawner enemySpawner;
     void Awake()
     {
         // to prevent Multiple instances of Audio Manager. Detail Below
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(Environment1);
+            //DontDestroyOnLoad(enemySpawner.gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        
+
 
 
     }

@@ -37,7 +37,7 @@ public class pathCreator : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo, targetLayerMask))
             {
                 playerAIController.canAimMove = false;
-                Debug.Log(hitInfo.transform.gameObject.layer);
+                
                 Vector3 hit_info = hitInfo.point;
                 hit_info.y = lineBoundY;
 
@@ -48,7 +48,7 @@ public class pathCreator : MonoBehaviour
             else
             {
                 playerAIController.canAimMove = true;
-                Debug.Log("Aimmove");
+               
             }
 
 

@@ -12,6 +12,7 @@ TagManager:
   - Soldier
   - EnemyDeath
   - base
+  - Persist
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - ground
   - Enemy
-  - 
+  - Bullet
   - 
   - 
   - 

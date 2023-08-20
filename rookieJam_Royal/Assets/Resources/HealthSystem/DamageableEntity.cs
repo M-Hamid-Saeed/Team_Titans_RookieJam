@@ -38,21 +38,26 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     public virtual void Die()
     {
        
-        ObjectPooler.Instance?.Free(this.gameObject);
-        CameraShaker.ShakeCamera();
         
+        CameraShaker.ShakeCamera();
+        EnemySpawner.AddKillCount();
         PlayParticles();
     }
     private void PlayParticles()
     {
         GameObject particle = ObjectPooler.Instance?.SpawnFromPool("EnemyDeath", this.transform.position, Quaternion.identity);
 
-        WaitForParticlePlay(particle);
+        StartCoroutine(WaitForParticlePlayAndFree(particle));
     }
-    IEnumerator WaitForParticlePlay(GameObject particle)
-    {
-        yield return new WaitForSeconds(.01f);
-        ObjectPooler.Instance?.Free(particle);
 
+    private IEnumerator WaitForParticlePlayAndFree(GameObject particle)
+    {
+        // Assuming your particle system component is named "ParticleSystem"
+        ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+        particleSystem.Play();
+        yield return new WaitForSeconds(particleSystem.main.duration);
+        ObjectPooler.Instance?.Free(particle);
+        ObjectPooler.Instance?.Free(this.gameObject);
     }
+
 }
