@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.33020732, g: 0.35729617, b: 0.40207446, a: 1}
+  m_IndirectSpecularColor: {r: 0.3304632, g: 0.35751644, b: 0.4023421, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,9 +294,6 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
-  Environment1: {fileID: 303011019}
-  Environment2: {fileID: 2626587090232084783, guid: dc9554d1452cc334e972d8cecf10738d, type: 3}
-  enemySpawner: {fileID: 71749977}
 --- !u!4 &98146886
 Transform:
   m_ObjectHideFlags: 0
@@ -551,11 +548,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &303011019 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8509769740964283618, guid: 9c83f55d5cdb9084b85676e89bf911b5, type: 3}
-  m_PrefabInstance: {fileID: 1081146798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &349236984 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1678827583025700823, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
@@ -4846,8 +4838,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8ef5962dda7be49a01aa8764bba45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environment1: {fileID: 303011019}
-  environment2: {fileID: 1672707052}
+  environment1: {fileID: 8509769740964283618, guid: 9c83f55d5cdb9084b85676e89bf911b5, type: 3}
+  environment2: {fileID: 2626587090232084783, guid: dc9554d1452cc334e972d8cecf10738d, type: 3}
 --- !u!4 &1549225122
 Transform:
   m_ObjectHideFlags: 0
@@ -4970,11 +4962,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1672707052 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2626587090232084783, guid: dc9554d1452cc334e972d8cecf10738d, type: 3}
-  m_PrefabInstance: {fileID: 892094465}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1674843889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1674843889, guid: 78e357166bcb2a54e858a8498310d4fb, type: 3}

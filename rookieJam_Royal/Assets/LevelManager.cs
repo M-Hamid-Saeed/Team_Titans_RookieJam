@@ -10,28 +10,38 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        environment1.SetActive(false);
+        environment2.SetActive(false);
+        SwitchEnvironments();
     }
 
     public void ReloadSceneWithEnvironmentsSwitched()
     {
-        
+
         SceneManager.LoadScene("Demo");
-        SwitchEnvironments();
+        // SwitchEnvironments();
     }
 
 
     public void SwitchEnvironments()
     {
-        environment1.SetActive(false);
-        environment2.SetActive(false);
+        if(Level==0)
+        {
+            Level = 1;
+            environment1.SetActive(true);
+            environment2.SetActive(false);
+        }
+        else
+        {
+
+            environment1.SetActive(false);
+            environment2.SetActive(true);
+            Level = 0;
+        }
+    }
+    int Level 
+    {
+        get { return PlayerPrefs.GetInt("Level1"); }
+        set { PlayerPrefs.SetInt("Level1", value); }
     }
 }
