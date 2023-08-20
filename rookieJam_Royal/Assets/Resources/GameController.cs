@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public GameObject darkBackground;
     public GameObject instructionPanel;
     public GameObject PlayAgainPanel;
+    public GameObject NextLevelPanel;
+
 
 
     public EnemySpawner enemySpawner;
@@ -63,5 +65,9 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("Demo");
+    }   
+    public void NextLevel()
+    {
+        NextLevelPanel.SetActive(true); 
     }
 }
