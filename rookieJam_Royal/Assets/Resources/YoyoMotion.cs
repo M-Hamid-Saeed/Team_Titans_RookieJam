@@ -6,7 +6,7 @@ public class YoyoMotion : MonoBehaviour
 {
     //public Vector3 startPoint;
     public Transform endPoint;
-  //  public float motionDuration = 5.0f;
+    public float motionDuration = 1.0f;
     public float delayBeforeStart = 2.0f;
 
     private void Start()
