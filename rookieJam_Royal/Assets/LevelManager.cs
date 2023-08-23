@@ -6,7 +6,6 @@ public class LevelManager : MonoBehaviour
     public GameObject environment1;
     public GameObject environment2;
 
-    private static LevelManager instance;
 
     private void Awake()
     {
@@ -18,14 +17,15 @@ public class LevelManager : MonoBehaviour
     public void ReloadSceneWithEnvironmentsSwitched()
     {
 
-        SceneManager.LoadScene("Demo");
+       
         // SwitchEnvironments();
     }
 
 
     public void SwitchEnvironments()
     {
-        if(Level==0)
+        SceneManager.LoadScene("Demo");
+        if (Level==0)
         {
             Level = 1;
             environment1.SetActive(true);

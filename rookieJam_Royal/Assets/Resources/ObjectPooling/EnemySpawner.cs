@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(SpawnEnemyWave());
+        enemyKillCount = 0;
         totalEnemies = numberOfEnemiesInWave;
     }
 

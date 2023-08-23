@@ -103,7 +103,7 @@ Transform:
   m_GameObject: {fileID: 1140185905381893686}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1140185905662073913}
@@ -170,9 +170,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.6178439
-  m_Height: 9.264189
+  m_Height: 12.588524
   m_Direction: 1
-  m_Center: {x: 0.07179022, y: 0.46031174, z: -0.18374889}
+  m_Center: {x: 0.07179025, y: 2.1224794, z: -0.18374881}
 --- !u!1 &1140185905662073914
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,4 +246,3 @@ MonoBehaviour:
   currentHealth: 0
   speed: 50
   explosionSound: {fileID: 8300000, guid: a17d9d8d995332f45941b6fe37664d37, type: 3}
-  audioSource: {fileID: 7712078991174200389, guid: 0e73aaae308ec4e4c84ef7a0e428a645, type: 3}
