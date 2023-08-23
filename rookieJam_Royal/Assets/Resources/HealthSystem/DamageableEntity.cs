@@ -8,6 +8,8 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     protected float currentHealth;
     [SerializeField]
     protected CameraShake_Management CameraShaker;
+   // [SerializeField] EnemySpawner enemySpawner;
+
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -16,7 +18,7 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        transform.DOShakeRotation(1f, 20, 10, 50,true);
+        transform.DOShakeRotation(1f, 20, 10, 50);
         //transform.DOScale(.5f, .2f);
         if (currentHealth <= 0)
         {
@@ -35,10 +37,9 @@ public class DamageableEntity : MonoBehaviour, IDamageable
         return maxHealth;
     }
 
-    public virtual void Die()
+    public void Die()
     {
-       
-        
+        this.GetComponent<BoxCollider>().enabled = false;
         CameraShaker.ShakeCamera();
         EnemySpawner.AddKillCount();
         PlayParticles();
@@ -46,8 +47,8 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     private void PlayParticles()
     {
         GameObject particle = ObjectPooler.Instance?.SpawnFromPool("EnemyDeath", this.transform.position, Quaternion.identity);
-
         StartCoroutine(WaitForParticlePlayAndFree(particle));
+        
     }
 
     private IEnumerator WaitForParticlePlayAndFree(GameObject particle)
@@ -55,7 +56,7 @@ public class DamageableEntity : MonoBehaviour, IDamageable
         // Assuming your particle system component is named "ParticleSystem"
         ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
         particleSystem.Play();
-        yield return new WaitForSeconds(particleSystem.main.duration);
+        yield return new WaitForSeconds(0.5f);
         ObjectPooler.Instance?.Free(particle);
         ObjectPooler.Instance?.Free(this.gameObject);
     }

@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2082072725811430164}
   - component: {fileID: 2082072725811430165}
-  - component: {fileID: 2082072725811430162}
   - component: {fileID: 2082072725811430167}
   - component: {fileID: 1266934493}
   - component: {fileID: 7712078991174200389}
+  - component: {fileID: 1266934496}
+  - component: {fileID: 1266934497}
   m_Layer: 0
   m_Name: Pooler
   m_TagString: Untagged
@@ -50,32 +51,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pools:
   - tag: Enemy
-    prefab: {fileID: 6675094102276225673, guid: a7640100a761ae2448f980e9edb1b77d, type: 3}
-    size: 10
+    prefab: {fileID: 0}
+    size: 50
   - tag: Bullet
     prefab: {fileID: 1594016806645539289, guid: a587d588cf691b7499a3c8a28d0fb707, type: 3}
-    size: 50
+    size: 100
   - tag: Soldier
     prefab: {fileID: 0}
-    size: 30
+    size: 40
   - tag: EnemyDeath
     prefab: {fileID: 417761080263594737, guid: 7800b8f6b712bfe49bd663eeb3ebe1e4, type: 3}
-    size: 10
---- !u!114 &2082072725811430162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082072725811430160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35619431299632645beb737d2fa56cdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints: []
-  numberOfEnemiesInWave: 5
-  timeBetweenSpawns: 1
+    size: 40
 --- !u!114 &2082072725811430167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e35ad9db85c7a245b2ba0c7f9dc4425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUpdateController: {fileID: 0}
+  playerUpdateController: {fileID: 1266934496}
 --- !u!82 &7712078991174200389
 AudioSource:
   m_ObjectHideFlags: 0
@@ -198,3 +184,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1266934496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082072725811430160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4ed52d3d492d047a118cf8059cb516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MissleAimPoint: {fileID: 0}
+  MisslespawnLocation: {fileID: 0}
+  missle: {fileID: 1140185905662073914, guid: fb3f46800d89f714fa8299d399302a48, type: 3}
+  input: {fileID: 1266934497}
+  AimpointBullet: {fileID: 0}
+  moveSpeed: 8
+  maxRotationX: 25
+  maxRotationY: 40
+  lerpFactor: 10
+  canAimMove: 0
+--- !u!114 &1266934497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082072725811430160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0510456282185745878431dbf7779ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchDelta: {x: 0, y: 0, z: 0}
+  senstivity: 8
+  isMousePressed: 0

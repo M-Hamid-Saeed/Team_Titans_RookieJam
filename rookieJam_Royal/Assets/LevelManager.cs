@@ -5,26 +5,28 @@ public class LevelManager : MonoBehaviour
 {
     public GameObject environment1;
     public GameObject environment2;
-
+    [SerializeField] EnemySpawner enemySpawner;
 
     private void Awake()
     {
+        EnemySpawner.enemyKillCount = 0;
         environment1.SetActive(false);
         environment2.SetActive(false);
+        EnemySpawner.OnLevelComplete += ReloadSceneWithEnvironmentsSwitched;
         SwitchEnvironments();
     }
 
     public void ReloadSceneWithEnvironmentsSwitched()
     {
 
-       
-        // SwitchEnvironments();
+        SceneManager.LoadScene("Demo");
+
     }
 
 
     public void SwitchEnvironments()
     {
-        SceneManager.LoadScene("Demo");
+        
         if (Level==0)
         {
             Level = 1;

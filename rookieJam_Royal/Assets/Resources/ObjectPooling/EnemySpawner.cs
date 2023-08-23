@@ -37,7 +37,8 @@ public class EnemySpawner : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
         Vector3 randomSpawnPoint = spawnPoints[randomIndex].position;
 
-        ObjectPooler.Instance.SpawnFromPool("Enemy", randomSpawnPoint, Quaternion.identity);
+        GameObject enemy = ObjectPooler.Instance.SpawnFromPool("Enemy", randomSpawnPoint, Quaternion.identity);
+        enemy.GetComponent<BoxCollider>().enabled = true;
     }
 
     // Method to enable spawning when the button is clicked
@@ -49,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
     public static void AddKillCount()
     {
         enemyKillCount++;
-
+        Debug.Log("ENEMY KILL COUNT" + enemyKillCount);
         // Check if all enemies have been killed
         if (enemyKillCount > totalEnemies)
         {

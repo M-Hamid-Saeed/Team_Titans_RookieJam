@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c561ec7512ed54192a24886740a554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {fileID: 0}
+  playerPos: {fileID: 5650859311440583267, guid: 78e357166bcb2a54e858a8498310d4fb, type: 3}
   movementDuration: 20
 --- !u!114 &5329830429110835871
 MonoBehaviour:
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   CameraShaker: {fileID: 6220568089041449271, guid: 74bd595431c2f874a90846a832da07ca, type: 3}
+  enemySpawner: {fileID: 874476792066587176, guid: f8abe03cfdfa11e469f87755c1bf8fd4, type: 3}
 --- !u!1001 &4802368845215303934
 PrefabInstance:
   m_ObjectHideFlags: 0
