@@ -40,7 +40,7 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     public void Die()
     {
         this.GetComponent<BoxCollider>().enabled = false;
-        CameraShaker.ShakeCamera();
+      //  CameraShaker.ShakeCamera();
         EnemySpawner.AddKillCount();
         PlayParticles();
     }
