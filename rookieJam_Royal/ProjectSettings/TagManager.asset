@@ -13,6 +13,7 @@ TagManager:
   - EnemyDeath
   - base
   - Persist
+  - BulletHit
   layers:
   - Default
   - TransparentFX

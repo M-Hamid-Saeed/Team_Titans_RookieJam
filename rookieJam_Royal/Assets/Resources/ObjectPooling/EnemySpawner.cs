@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public int numberOfEnemiesInWave;
     public static int totalEnemies;
     public float timeBetweenSpawns = 1.0f;
-
+    public pathCreator PathCreator;
     public bool canSpawn = false; // Control whether the spawner can spawn enemies
     public static int enemyKillCount = 0;
 
@@ -52,10 +52,12 @@ public class EnemySpawner : MonoBehaviour
         enemyKillCount++;
         Debug.Log("ENEMY KILL COUNT" + enemyKillCount);
         // Check if all enemies have been killed
-        if (enemyKillCount > totalEnemies)
+        if (enemyKillCount == totalEnemies)
         {
             Debug.Log("levelPassed");
+            
             OnLevelComplete?.Invoke();
+            
         }
     }
 }

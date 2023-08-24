@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private float damage;
     private Vector3 hitPos;
     private float lifeTime = 2;
+    GameObject particle;
     [SerializeField] BulletPooler bulletPooler;
    
     [SerializeField] SoldierPooler soldierPooler;
@@ -42,7 +43,8 @@ public class Bullet : MonoBehaviour
 
             bulletPooler.ReturnToPool(this.gameObject);
             EnableTrail(false);
-            lifeTime = 3;
+            lifeTime = 2;
+            ObjectPooler.Instance?.Free(particle);
         }
     }
    
@@ -69,6 +71,7 @@ public class Bullet : MonoBehaviour
         if (damageableEntity != null)
         {
             damageableEntity.TakeDamage(damage);
+            particle = ObjectPooler.Instance?.SpawnFromPool("BulletHit", collision.GetContact(0).point, Quaternion.identity);
             Vibration.VibrateNope();
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))

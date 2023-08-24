@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9efb714706857c641b11969fa71258a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnitude: 1.38
-  roughness: 1.7
-  fadeInTime: 0.27
-  fadeOutTime: 0.23
+  magnitude: 1.43
+  roughness: 8.6
+  fadeInTime: 1.08
+  fadeOutTime: 0.86

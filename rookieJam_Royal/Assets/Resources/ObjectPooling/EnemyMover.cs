@@ -24,4 +24,5 @@ public class EnemyMover : MonoBehaviour
         // Return the enemy to the pool or destroy it as needed
         ObjectPooler.Instance.Free(gameObject);
     }
+   
 }

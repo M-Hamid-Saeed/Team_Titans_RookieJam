@@ -57,8 +57,8 @@ public class Shoot : MonoBehaviour
            
             bulletClone.SetDamage(bulletDamage);
             bulletClone.SetHitPosition(newSpreadAimPoint);
-            bulletClone.SetDirection(( newSpreadAimPoint- muzzlePoint.position).normalized);
-            
+            //  bulletClone.SetDirection(( newSpreadAimPoint- muzzlePoint.position).normalized);
+            bulletClone.SetDirection(transform.forward); // Shoot in player's forward direction
 
             yield return fireRateTime; // Wait for the fire rate before shooting again
             canShot = false;

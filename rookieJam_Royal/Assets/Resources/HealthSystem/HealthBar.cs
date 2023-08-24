@@ -15,13 +15,13 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
        
-            float fillValue = playerHealth.GetCurrentHealth() / playerHealth.GetMaxHealth();
+            float fillValue = playerHealth.GetCurrentHealth() / 100;
             slider.value = fillValue;
 
 
         if (fillValue <= 0) // Check if health reaches zero
         {
-            playerHealth.ResetHealth();
+            playerHealth.currentHealth = 100;
             gameController.PlayAgain();
         }
     }

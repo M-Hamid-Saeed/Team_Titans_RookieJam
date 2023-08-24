@@ -15,7 +15,7 @@ public class DamageableEntity : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damageAmount)
+    public virtual void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
         transform.DOShakeRotation(1f, 20, 10, 50);
@@ -46,7 +46,7 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     }
     private void PlayParticles()
     {
-        GameObject particle = ObjectPooler.Instance?.SpawnFromPool("EnemyDeath", this.transform.position, Quaternion.identity);
+        GameObject particle = ObjectPooler.Instance?.SpawnFromPool("EnemyDeath", new Vector3(transform.position.x, transform.position.y + 1f,transform.position.z), Quaternion.identity); ;
         StartCoroutine(WaitForParticlePlayAndFree(particle));
         
     }
@@ -56,9 +56,16 @@ public class DamageableEntity : MonoBehaviour, IDamageable
         // Assuming your particle system component is named "ParticleSystem"
         ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
         particleSystem.Play();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         ObjectPooler.Instance?.Free(particle);
         ObjectPooler.Instance?.Free(this.gameObject);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
 
+            Die();
+        }
+    }
 }
