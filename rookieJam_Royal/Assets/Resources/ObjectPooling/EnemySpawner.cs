@@ -17,10 +17,13 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(SpawnEnemyWave());
+        
+    }
+    private void Start()
+    {
         enemyKillCount = 0;
         totalEnemies = numberOfEnemiesInWave;
     }
-
     private IEnumerator SpawnEnemyWave()
     {
         yield return new WaitUntil(() => canSpawn);

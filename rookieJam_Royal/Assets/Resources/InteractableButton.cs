@@ -10,7 +10,7 @@ public class InteractableButton : MonoBehaviour
     public TextMeshProUGUI interactionsText; // Use TextMeshProUGUI for TextMesh Pro support
     public Button button;
 
-    void Awake()
+    void Start()
     {
         remainingInteractions = maxInteractions;
         UpdateInteractionsText();

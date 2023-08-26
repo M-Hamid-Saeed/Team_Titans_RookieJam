@@ -14,7 +14,7 @@ public class pathCreator : MonoBehaviour
     private List<Vector3> pathPoints = new List<Vector3>();
     [SerializeField] PlayerUpdateAIController playerAIController;
 
-    [SerializeField] public int maxSoldierCount = 20; // Maximum number of soldiers
+    [SerializeField] public int maxSoldierCount = 0; // Maximum number of soldiers
 
     public int currentSoldierCount = 0; // Current number of spawned soldiers
 
