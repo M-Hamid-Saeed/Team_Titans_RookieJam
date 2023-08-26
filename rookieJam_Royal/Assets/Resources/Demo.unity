@@ -5805,9 +5805,33 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 760487211}
+    - target: {fileID: 2969181148120411498, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2994060122076502021, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599591918699038775, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 4599591918699038775, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599591918699038775, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
+      propertyPath: m_overrideHtmlColors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599591918699038775, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599591918699038775, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5949625604192588264, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5825,6 +5849,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 760487211}
+    - target: {fileID: 6445857666188674160, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7657449149737141398, guid: 6a2785ebd0ae0e14d857fb745b547e7c, type: 3}
       propertyPath: m_Name
       value: UI
