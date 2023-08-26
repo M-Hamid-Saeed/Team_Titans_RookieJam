@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject playButton;
+    public GameObject StartPanel;
+    //public GameObject playButton;
     public GameObject darkBackground;
     public GameObject instructionPanel;
     public GameObject PlayAgainPanel;
@@ -21,17 +22,16 @@ public class GameController : MonoBehaviour
 
         // Hide instruction panel initially
         instructionPanel.SetActive(false);
-
-        // Show play button and dark background
-        playButton.SetActive(true);
+        
         darkBackground.SetActive(true);
+        StartPanel.SetActive(true);
     }
 
     public void PlayGame()
     {
         FindObjectOfType<AudioManager>().Play("click");
         // Hide play button and dark background
-        playButton.SetActive(false);
+        StartPanel.SetActive(false);
         darkBackground.SetActive(false);
 
         // Show instruction panel after a delay
